@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\ItemsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +19,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('/', 'index');
+Route::get('/', AppController::class)->name('index');
+
+Route::resource('items', ItemsController::class);

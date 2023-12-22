@@ -12,7 +12,8 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        //
+        $items = Items::paginate(20);
+        return view('items.index', compact('items'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
 
     /**
@@ -28,7 +29,16 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'slug' => 'required|string|min:3|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+
+        $item = Items::create($validated);
+
+        return redirect()->route('items.index')->with('success', 'Category added successfully.');
     }
 
     /**
@@ -44,7 +54,7 @@ class ItemsController extends Controller
      */
     public function edit(Items $items)
     {
-        //
+        return view('items.edit', compact('items'));
     }
 
     /**
@@ -60,6 +70,8 @@ class ItemsController extends Controller
      */
     public function destroy(Items $items)
     {
-        //
+        $items->delete();
+
+        return redirect()->route('items.index')->with('success', 'Category deleted successfully.');
     }
 }
