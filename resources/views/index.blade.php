@@ -3,34 +3,16 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="mt-4 p-5 bg-black text-white rounded">
-        <h1>All Items</h1>
-        <a href="{{ route('order-add.index') }}" class="btn btn-primary btn-sm">Add New Order</a>
+    <div class="mt-4 p-5 bg-black text-white rounded ">
+        <h1 style="text-align: center;">Toko abc</h1>
+        <div class="mb-3  bg-black text-white rounded d-flex justify-content-center ">
+            <a href="{{ route('order-add.index') }}" class="btn btn-primary btn-sm"> Order</a>
+
+            <a href="{{ route('items.index') }}" class="btn btn-primary btn-sm">Items</a>
+        </div>
     </div>
 
-    {{-- Cek jika $featured tidak kosong --}}
-    {{-- @if ($featured)
-        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-            <div class="row mb-2">
-                <div class="col-md-6 px-0">
-                    <h1 class="display-4 fst-italic">{{ $featured->title }}</h1>
-                    <p class="lead my-3">{{ Str::limit($featured->body, 50, ' ...') }}</p>
-                    <p class="lead mb-0">
-                        <a href="{{ route('articles.show', $featured) }}" class="text-white fw-bold">
-                            Continue reading...
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    @if ($featured->image)
-                        <img src="{{ $featured->image_url }}" class="img-fluid">
-                    @else
-                        <img src="https://via.placeholder.com/250x200" class="img-fluid">
-                    @endif
-                </div>
-            </div>
-        </div>
-    @endif --}}
+
 
     {{-- Articles Card --}}
     {{-- <div class="row mb-2">

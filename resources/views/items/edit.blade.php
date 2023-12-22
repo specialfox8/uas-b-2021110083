@@ -22,16 +22,18 @@
             <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 col-md-12 col-sm-12">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}">
+                    <label for="name" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
-                    <label for="harga" class="form-label">Harga</label>
-                    <input type="text" class="form-control" id="harga" name="harga" value="{{ old('harga') }}">
+                    <label class="form-label">Harga</label>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01"
+                        value="{{ old('price') }}">
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="stok" class="form-label">Stok</label>
-                    <input type="text" class="form-control" id="stok" name="stok" value="{{ old('stok') }}">
+                    <input type="number" class="form-control" id="stock" name="stock" value="{{ old('stock') }}"
+                        min="0">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">Save</button>

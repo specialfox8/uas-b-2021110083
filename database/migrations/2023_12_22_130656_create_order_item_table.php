@@ -24,7 +24,7 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->foreign('item_id')
-                ->references('id')
+                ->references('id_items')
                 ->on('items')
                 ->onDelete('cascade');
         });

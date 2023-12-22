@@ -30,27 +30,37 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+
             'name' => 'required|string',
             'price' => 'required|numeric|between:0.01,9999999.99',
             'stock' => 'required|integer|min:0',
         ]);
 
         $item = new Items();
+
         $item->name = $validatedData['name'];
         $item->price = $validatedData['price'];
         $item->stock = $validatedData['stock'];
+        $item->id_items = $this->generate16DigitID();
 
         $item->save();
 
-        return redirect()->route('items.index')->with('success', 'Category added successfully.');
+        return redirect()->route('items.index')->with('success', 'Item added successfully.');
     }
+
+    private function generate16DigitID()
+    {
+        return sprintf('%016d', mt_rand(1, 9999999999999999));
+    }
+
+
 
     /**
      * Display the specified resource.
      */
     public function show(Items $items)
     {
-        //
+        return view('items.show', compact('items'));
     }
 
     /**
@@ -66,8 +76,26 @@ class ItemsController extends Controller
      */
     public function update(Request $request, Items $items)
     {
-        //
+        $validatedData = $request->validate([
+
+            'name' => 'required|string',
+            'price' => 'required|numeric|between:0.01,9999999.99',
+            'stock' => 'required|integer|min:0',
+        ]);
+
+        $item = new Items();
+
+        $item->name = $validatedData['name'];
+        $item->price = $validatedData['price'];
+        $item->stock = $validatedData['stock'];
+        $item->id_items = $this->generate16DigitID();
+
+        $item->save();
+
+        return redirect()->route('items.index')->with('success', 'item update successfully.');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -76,6 +104,6 @@ class ItemsController extends Controller
     {
         $items->delete();
 
-        return redirect()->route('items.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('items.index')->with('success', 'Item deleted successfully.');
     }
 }

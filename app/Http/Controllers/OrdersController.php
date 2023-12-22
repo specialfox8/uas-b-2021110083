@@ -32,8 +32,8 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'full_name' => 'required|string|min:3|max:255',
-            'email' => 'required|string|email',
+            'item' => 'required|string|min:3|max:255',
+            'jumlah' => 'required|integer|min:0',
             'phone_number' => 'required|numeric|digits_between:5,15',
         ]);
 

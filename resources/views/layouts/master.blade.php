@@ -14,7 +14,8 @@
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
-                    <a class="link-secondary" href="#">Subscribe</a>
+                    <a class="link-secondary" href="/">Home</a>
+
                 </div>
                 <div class="col-4 text-center">
                     <a class="blog-header-logo text-dark" href="#">Large</a>
@@ -57,8 +58,8 @@
     </main>
 
     <footer class="blog-footer mt-4">
-        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
-                href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>
+            Copyright © {{ date('Y') }} <a href="/">Blogging</a>
         <p>
             <a href="#">Back to top</a>
         </p>

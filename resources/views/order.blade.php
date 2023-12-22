@@ -40,13 +40,14 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="mb-3 col-md-8 col-sm-12">
-                    <label for="email" class="form-label">Jumlah</label>
-                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                <div class="mb-3 col-md-12 col-sm-12">
+                    <label for="jumlah" class="form-label">Jumlah</label>
+                    <input type="number" class="form-control" id="jumlah" name="jumlah" min="0">
                 </div>
+
                 <div class="mb-3 col-md-8 col-sm-12">
                     <label for="phone_number" class="form-label">Harga</label>
-                    <input type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                    <input type="text" class="form-control" name="phone_number">
                 </div>
                 <button type="submit" class="btn btn-primary">Pesan</button>
             </form>

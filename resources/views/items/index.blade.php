@@ -18,11 +18,10 @@
         <table class="table table-bordered mb-5">
             <thead>
                 <tr class="table-success">
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Tags</th>
-                    <th scope="col">Body</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Stok</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Updated At</th>
                     <th scope="col">Action</th>
@@ -31,33 +30,30 @@
             <tbody>
                 @forelse ($items as $item)
                     <tr>
-                        {{-- <th scope="row">
-                            <a href="{{ route('items.show', $item) }}">
-                                {{ $item->Nama }}
+                        <th scope="row">
+                            <a href="{{ route('items.show', ['item' => $item->id_items]) }}">
+                                {{ $item->id_items }}
                             </a>
                         </th>
-                        <td>{{ $item->Nama?->name ?? 'No Category' }}</td>
-                        <td>{{ $item->Nama?->name ?? 'No Category' }}</td>
-                         <td>
-                            @foreach ($item->tags as $tag)
-                                <span class="badge bg-primary">{{ $tag->name }}</span>
-                            @endforeach
-                        </td>
-                         <td></td>
-                        <td>{{ $article->created_at }}</td>
-                        <td>{{ $article->updated_at }}</td>
+
+                        <td>{{ $item->name }}</td>
+                        <td>Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                        {{-- <td>{{ $item->price }}</td> --}}
+                        <td>{{ $item->stock }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->updated_at }}</td>
                         <td>
-                            <a href="{{ route('items.edit', $item) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('items.edit', ['item' => $item->id_items]) }}" class="btn btn-primary btn-sm">
                                 Edit
                             </a>
-                            <form action="{{ route('items.destroy', $item) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route('items.destroy', ['item' => $item->id_items]) }}" method="POST"
+                                class="d-inline-block">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Are you sure?')">Delete
-                                </button>
+                                    onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
-                         </td> --}}
+                        </td>
                     </tr>
                 @empty
                     <tr>
