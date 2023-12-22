@@ -14,9 +14,9 @@
 
 
 
-    {{-- Articles Card --}}
-    {{-- <div class="row mb-2">
-        @forelse ($articles as $article)
+
+    <div class="row mb-2">
+        @forelse ($orders as $order)
             <x-article-card :article="$article" />
         @empty
             <div class="col-md-12">
@@ -28,6 +28,6 @@
             </div>
         @endforelse
 
-        {{ $articles->links() }}
-    </div> --}}
+        {{-- {{ $->links() }} --}}
+    </div>
 @endsection

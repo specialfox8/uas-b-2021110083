@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Items;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -41,17 +42,14 @@ class ItemsController extends Controller
         $item->name = $validatedData['name'];
         $item->price = $validatedData['price'];
         $item->stock = $validatedData['stock'];
-        $item->id_items = $this->generate16DigitID();
+
 
         $item->save();
 
         return redirect()->route('items.index')->with('success', 'Item added successfully.');
     }
 
-    private function generate16DigitID()
-    {
-        return sprintf('%016d', mt_rand(1, 9999999999999999));
-    }
+
 
 
 
@@ -76,21 +74,23 @@ class ItemsController extends Controller
      */
     public function update(Request $request, Items $items)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
 
             'name' => 'required|string',
             'price' => 'required|numeric|between:0.01,9999999.99',
             'stock' => 'required|integer|min:0',
         ]);
 
-        $item = new Items();
 
-        $item->name = $validatedData['name'];
-        $item->price = $validatedData['price'];
-        $item->stock = $validatedData['stock'];
-        $item->id_items = $this->generate16DigitID();
+        $items->update([
+            'name' => $validated['name'],
+            'price' => $validated['price'],
+            'stock' => $validated['stock'],
+            'published_at' => $request->has('is_published') ? Carbon::now() : null,
 
-        $item->save();
+        ]);
+
+        $items->update($validated);
 
         return redirect()->route('items.index')->with('success', 'item update successfully.');
     }
@@ -100,9 +100,9 @@ class ItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Items $items)
+    public function destroy(Items $item)
     {
-        $items->delete();
+        $item->delete();
 
         return redirect()->route('items.index')->with('success', 'Item deleted successfully.');
     }

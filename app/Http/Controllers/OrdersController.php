@@ -32,9 +32,9 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'item' => 'required|string|min:3|max:255',
+            'item' => 'nullable|exists:items,id',
             'jumlah' => 'required|integer|min:0',
-            'phone_number' => 'required|numeric|digits_between:5,15',
+            'status' => 'required|in:Selesai,Menunggu Pembayaran',
         ]);
 
         $order = Orders::create($validated);

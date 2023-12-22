@@ -34,7 +34,7 @@
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label class="form-label">Item</label>
                     <select class="form-select form-select-lg mb-3" name="items_id">
-                        <option>No Category</option>
+                        <option>No items</option>
                         @foreach ($items as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
@@ -45,10 +45,13 @@
                     <input type="number" class="form-control" id="jumlah" name="jumlah" min="0">
                 </div>
 
-                <div class="mb-3 col-md-8 col-sm-12">
-                    <label for="phone_number" class="form-label">Harga</label>
-                    <input type="text" class="form-control" name="phone_number">
-                </div>
+                <select class="form-select form-select-lg mb-3" name="status">
+                    <option>Pilih Status</option>
+                    <option value="Selesai" {{ old('status') == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+                    <option value="Menunggu Pembayaran" {{ old('status') == 'Menunggu Pembayaran' ? 'selected' : '' }}>
+                        Menunggu Pembayaran</option>
+
+                </select>
                 <button type="submit" class="btn btn-primary">Pesan</button>
             </form>
         </div>

@@ -31,7 +31,7 @@
                 @forelse ($items as $item)
                     <tr>
                         <th scope="row">
-                            <a href="{{ route('items.show', ['item' => $item->id_items]) }}">
+                            <a href="{{ route('items.show', $item) }}">
                                 {{ $item->id_items }}
                             </a>
                         </th>
@@ -43,11 +43,17 @@
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->updated_at }}</td>
                         <td>
-                            <a href="{{ route('items.edit', ['item' => $item->id_items]) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('items.edit', $item) }}" class="btn btn-primary btn-sm">
                                 Edit
                             </a>
-                            <form action="{{ route('items.destroy', ['item' => $item->id_items]) }}" method="POST"
+                            {{-- <form action="{{ route('items.destroy', ['item' => $item->id_items]) }}" method="POST"
                                 class="d-inline-block">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure?')">Delete</button>
+                            </form> --}}
+                            <form action="{{ route('items.destroy', $item) }}" method="POST" class="d-inline-block">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm"
