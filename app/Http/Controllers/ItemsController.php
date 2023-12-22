@@ -29,14 +29,18 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|min:3|max:255',
-            'slug' => 'required|string|min:3|max:255',
-            'description' => 'nullable|string',
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric|between:0.01,9999999.99',
+            'stock' => 'required|integer|min:0',
         ]);
 
+        $item = new Items();
+        $item->name = $validatedData['name'];
+        $item->price = $validatedData['price'];
+        $item->stock = $validatedData['stock'];
 
-        $item = Items::create($validated);
+        $item->save();
 
         return redirect()->route('items.index')->with('success', 'Category added successfully.');
     }

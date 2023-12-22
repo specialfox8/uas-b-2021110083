@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ItemsController;
+
+use App\Http\Controllers\OrdersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +24,7 @@ Route::get('/', function () {
 Route::get('/', AppController::class)->name('index');
 
 Route::resource('items', ItemsController::class);
+
+Route::get('/contact-us', [OrdersController::class, 'index'])->name('order-add.index');
+Route::post('/contact-us', [OrdersController::class, 'store'])->name('order-add.store');
+Route::resource('categories', ItemsController::class);

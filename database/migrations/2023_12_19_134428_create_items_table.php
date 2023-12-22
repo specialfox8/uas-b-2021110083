@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->double('harga', 10, 2)->unsigned()->default(0);
-            $table->unsignedInteger('stok')->default(0);
+            $table->string('name');
+            $table->double('price', 10, 2)->unsigned()->default(0);
+            $table->unsignedInteger('stock')->default(0);
             $table->timestamps();
         });
     }

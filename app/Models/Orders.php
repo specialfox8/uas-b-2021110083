@@ -8,19 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Orders extends Model
 {
     use HasFactory;
+    protected $fillable = ['full_name', 'email', 'phone_number'];
 
-    protected $fillable = [
-        'name',
-        'description',
-        'harga',
-        'stok',
-        'created_at',
-        'updated_at',
-    ];
-
-    // 1 Category dapat memiliki banyak Articles
-    public function articles()
+    public function item()
     {
-        return $this->hasMany(Orders::class);
+        return $this->belongsTo(Items::class);
     }
 }

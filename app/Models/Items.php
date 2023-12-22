@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\Orders;
+
+use App\Models\Orders;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,7 @@ class Items extends Model
     ];
 
     // 1 Category dapat memiliki banyak Articles
-    public function articles()
+    public function order()
     {
         return $this->hasMany(Orders::class);
     }

@@ -3,6 +3,11 @@
 @section('title', 'Home')
 
 @section('content')
+    <div class="mt-4 p-5 bg-black text-white rounded">
+        <h1>All Items</h1>
+        <a href="{{ route('order-add.index') }}" class="btn btn-primary btn-sm">Add New Order</a>
+    </div>
+
     {{-- Cek jika $featured tidak kosong --}}
     {{-- @if ($featured)
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
