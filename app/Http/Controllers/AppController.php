@@ -12,16 +12,13 @@ class AppController extends Controller
         $orders = Orders::query();
 
         if ($request->query('items')) {
-            //Filter artikel berdasarkan category
-            // select * from articles join categories on articles.category_id = categories.id
-            // where categories.slug = 'world-news'
+
             $orders->whereHas('items', function ($query) use ($request) {
                 $query->where('nama', $request->query('items'));
             });
         }
 
-        // $featured = $orders?->shift();
-        // return view('index', compact('orders', 'featured'));
+
         return view('index');
     }
 }
