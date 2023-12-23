@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class ItemsController extends Controller
 {
+    public function __construct()
+    {
+        // Hanya user yang sudah login yang bisa mengakses route ini
+        $this->middleware('auth')->except(['show']);
+        // Hanya admin yang bisa mengakses route ini
+        $this->middleware('admin')->except(['show']);
+    }
+
+
     /**
      * Display a listing of the resource.
      */
