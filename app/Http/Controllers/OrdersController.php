@@ -51,7 +51,7 @@ class OrdersController extends Controller
 
         $item->stock -= $validated['jumlah'];
         $item->save();
-        return redirect()->route('home')->with('success', 'Thank you');
+        return redirect()->route('index')->with('success', 'Thank you');
     }
 
     /**
