@@ -18,6 +18,21 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@likmi.ac.id',
+            'password' => bcrypt('12345678'),
+            'is_admin' => true,
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'fox',
+            'email' => 'fox@likmi.ac.id',
+            'password' => bcrypt('12345678'),
+            'is_admin' => false,
+        ]);
+
+
         $this->call([
             ItemSeeder::class,
         ]);

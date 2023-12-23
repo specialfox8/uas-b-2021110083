@@ -42,3 +42,4 @@ Route::post('/contact-us', [ContactController::class, 'store'])->name('contact-u
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/some-route', 'SomeController@someMethod')->middleware('admin');
