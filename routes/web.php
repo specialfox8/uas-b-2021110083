@@ -28,5 +28,6 @@ Route::get('/items/{id}', [ItemsController::class, 'show']);
 Route::put('/items/edit', [ItemsController::class, 'update'])->name('items.update');
 Route::get('/', AppController::class)->name('home');
 
+
 Route::get('/contact-us', [OrdersController::class, 'index'])->name('order-add.index');
 Route::post('/contact-us', [OrdersController::class, 'store'])->name('order-add.store');
