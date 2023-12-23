@@ -32,13 +32,12 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'item' => 'nullable|exists:items,id',
-            'jumlah' => 'required|integer|min:0',
+
             'status' => 'required|in:Selesai,Menunggu Pembayaran',
         ]);
 
         $order = Orders::create($validated);
-        return redirect()->route('order-add.index')->with('success', 'Thank you, we will contact you soon!');
+        return redirect()->route('order-add.index')->with('success', 'Thank you');
     }
 
     /**
