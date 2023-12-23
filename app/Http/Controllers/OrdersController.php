@@ -37,7 +37,7 @@ class OrdersController extends Controller
         ]);
 
         $order = Orders::create($validated);
-        return redirect()->route('order-add.index')->with('success', 'Thank you');
+        return redirect()->route('home')->with('success', 'Thank you');
     }
 
     /**
