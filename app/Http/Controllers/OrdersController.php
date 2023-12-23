@@ -32,11 +32,25 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-
+            'items_id' => 'required|exists:items,id',
+            'jumlah' => 'required|integer|min:1',
             'status' => 'required|in:Selesai,Menunggu Pembayaran',
         ]);
 
+        // Ambil item yang dipilih dari database
+        $item = Items::findOrFail($validated['items_id']);
+
+        // Pastikan jumlah pesanan tidak melebihi stok
+        if ($validated['jumlah'] > $item->stock) {
+            return redirect()->back()->with('error', 'Jumlah pesanan melebihi stok.');
+        }
+
+        // Simpan pesanan
         $order = Orders::create($validated);
+
+        // Kurangi stok item
+        $item->stock -= $validated['jumlah'];
+        $item->save();
         return redirect()->route('home')->with('success', 'Thank you');
     }
 
