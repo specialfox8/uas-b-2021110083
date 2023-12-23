@@ -128,5 +128,12 @@ h1, h2, h3, h4, h5, h6 {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
-
 }
+
+ .custom-pagination {
+        font-size: 10px;
+    }
+
+    .custom-pagination .pagination li {
+        margin: 0 8px;
+    }

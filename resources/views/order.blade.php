@@ -52,6 +52,10 @@
                         Menunggu Pembayaran</option>
 
                 </select>
+                <div class="mb-3 col-md-12 col-sm-12">
+                    <label for="jumlah" class="form-label">Jumlah</label>
+                    <input type="number" class="form-control" id="jumlah" name="jumlah" min="0">
+                </div>
                 <button type="submit" class="btn btn-primary">Pesan</button>
             </form>
         </div>

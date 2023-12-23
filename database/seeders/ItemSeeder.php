@@ -14,11 +14,17 @@ class ItemSeeder extends Seeder
     public function run(): void
     {
         $items = [
-            ['name' => 'Buku tulis', 'harga' => '5000', 'stok' => '50', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Tas', 'harga' => '150000', 'stok' => '10', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'pensil', 'harga' => '2000', 'stok' => '30', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Penghapus', 'harga' => '2000', 'stok' => '50', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Penggaris', 'harga' => '3000', 'stok' => '20', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Buku tulis', 'price' => '5000', 'stock' => '50', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Tas', 'price' => '150000', 'stock' => '10', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'pensil', 'price' => '2000', 'stock' => '30', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Penghapus', 'price' => '2000', 'stock' => '50', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Penggaris', 'price' => '3000', 'stock' => '20', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Pulpen', 'price' => '5000', 'stock' => '25', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Busur', 'price' => '4500', 'stock' => '10', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Spidol', 'price' => '8000', 'stock' => '30', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Kertas HVS A4', 'price' => '500', 'stock' => '100', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Kertas HVS F4', 'price' => '500', 'stock' => '100', 'created_at' => now(), 'updated_at' => now()],
+
         ];
 
         DB::table('items')->insert($items);

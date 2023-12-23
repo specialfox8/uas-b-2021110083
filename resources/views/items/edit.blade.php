@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mt-4 p-5 bg-black text-white rounded">
-        <h1>Uodate Items</h1>
+        <h1>Update Items</h1>
     </div>
 
     @if ($errors->any())
@@ -19,21 +19,23 @@
 
     <div class="row my-5">
         <div class="col-12 px-5">
-            <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('items.update', $items) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name"
+                        value="{{ old('name', $items->name) }}">
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label class="form-label">Harga</label>
                     <input type="number" class="form-control" id="price" name="price" step="0.01"
-                        value="{{ old('price') }}">
+                        value="{{ old('price', $items->price) }}">
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="stok" class="form-label">Stok</label>
-                    <input type="number" class="form-control" id="stock" name="stock" value="{{ old('stock') }}"
-                        min="0">
+                    <input type="number" class="form-control" id="stock" name="stock"
+                        value="{{ old('stock', $items->stock) }}" min="0">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">Save</button>

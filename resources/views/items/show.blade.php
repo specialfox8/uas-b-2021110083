@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('name', $items->id_items)
+@section('title', $items->name)
 
 @section('content')
     <article class="blog-post my-4">

@@ -14,10 +14,10 @@
 
 
 
-
+    {{--
     <div class="row mb-2">
         @forelse ($orders as $order)
-            <x-article-card :article="$article" />
+            <x-order-card :order="$order" />
         @empty
             <div class="col-md-12">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -26,8 +26,8 @@
                     </div>
                 </div>
             </div>
-        @endforelse
+        @endforelse --}}
 
-        {{-- {{ $->links() }} --}}
+    {{-- {{ $item->links() }} --}}
     </div>
 @endsection

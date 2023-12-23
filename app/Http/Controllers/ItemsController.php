@@ -13,7 +13,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = Items::paginate(20);
+        $items = Items::paginate(5);
         return view('items.index', compact('items'));
     }
 
@@ -58,6 +58,8 @@ class ItemsController extends Controller
      */
     public function show(Items $items)
     {
+
+
         return view('items.show', compact('items'));
     }
 
@@ -66,6 +68,7 @@ class ItemsController extends Controller
      */
     public function edit(Items $items)
     {
+
         return view('items.edit', compact('items'));
     }
 

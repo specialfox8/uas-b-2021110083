@@ -46,13 +46,10 @@
                             <a href="{{ route('items.edit', $item) }}" class="btn btn-primary btn-sm">
                                 Edit
                             </a>
-                            {{-- <form action="{{ route('items.destroy', ['item' => $item->id_items]) }}" method="POST"
-                                class="d-inline-block">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Are you sure?')">Delete</button>
-                            </form> --}}
+                            <a href="{{ route('items.show', $item) }}" class="btn btn-secondary btn-sm">
+                                Show
+                            </a>
+
                             <form action="{{ route('items.destroy', $item) }}" method="POST" class="d-inline-block">
                                 @method('DELETE')
                                 @csrf
@@ -69,7 +66,7 @@
             </tbody>
         </table>
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center custom-pagination">
             {!! $items->links() !!}
         </div>
     </div>
